@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Oryza Sativa Population</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="{{ url_for('index') }}">Home</a>
+            <a class="navbar-brand" href="#">About</a>
+            <a class="navbar-brand" href="{{ url_for('get_input') }}">Go to Input Field</a>
+        </nav>
+        <h1 class="text-center">Prediction of Height</h1>
+    </header>
+
+    <div class="container mt-4">
+        <form action="/process" method="post">
+            <div class="form-group">
+                <label for="input_field">Enter 9-character DNA sequence:</label>
+                <input type="text" class="form-control" id="input_field" name="input_text" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        {% if height %}
+        <div class="result-container mt-4">
+            <h3>Entered sequence:</h3>
+            <p>{{ input_text }}</p>
+
+            <h3>Predicted rice subpopulation:</h3>
+            <p>{{ Subpopulation }}</p>
+
+            <h3>Predicted height:</h3>
+            <p>{{ height }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

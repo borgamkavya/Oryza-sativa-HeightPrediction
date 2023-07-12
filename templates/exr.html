@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Oryza Sativa Population</title>
+    <link rel="stylesheet"  href="{{ url_for('static', filename='style.css') }}">
+    <div>
+
+    </div>
+</head>
+<body>
+    <header>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="{{url_for('index')}}">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="{{url_for('get_input')}}">Go to Input Field</a></li>
+                </ul>
+            </nav>
+        </header>
+        <h1>Prediction of Height</h1>
+    </header>
+    <form action="/process" method="post">
+        <label for="input_field">Enter 9-character DNA sequence:</label>
+        <input type="text" id="input_field" name="input_text" required>
+        <button>Submit</button>
+    </form>
+    
+    {% if height %}
+    <div class="result-container">
+        <h3>Entered sequence:</h3>
+        <p>{{ input_text }}</p>
+        
+        <h3>Predicted rice subpopulation:</h3>
+        <p>{{ Subpopulation }}</p>
+        
+        <h3>Predicted height:</h3>
+        <p>{{ height }}</p>
+    </div>
+    {% endif %}
+
+</body>
+</html>
